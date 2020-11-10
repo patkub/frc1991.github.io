@@ -19,15 +19,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: Install dependencies
+        run: npm install
 
-      # Install jade
-      - name: Install harp
-        run: |
-          cd _harp
-          npm install harp
-          
       - name: Compile
-        run: ./_harp/node_modules/harp/bin/harp compile ./_harp ./
+        run: npx harp compile ./_harp ./
       
       - name: Push
         run: |
